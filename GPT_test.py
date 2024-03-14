@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-data = st.file_uploader("Please upload Search Query Terms", type = [csv])
+data = st.file_uploader("Upload your input CSV file", type=['csv'])
 
 st.set_page_config(page_title= f"SQR Dash",page_icon="🧑‍🚀",layout="wide")
                    
