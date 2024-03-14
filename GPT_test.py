@@ -10,5 +10,12 @@ if uploaded_file is not None:
     data = pd.read_csv(uploaded_file)
     st.write(data)
 
+search_term_col = data['Search term']
+
+search_terms = ", ".join(search_term_col)
+
+st.write(search_terms)
+
+
 
 
