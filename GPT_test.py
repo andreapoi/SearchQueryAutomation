@@ -3,7 +3,7 @@ import pandas as pd
 
 st.set_page_config(page_title= f"SQR Dash",page_icon="🧑‍🚀",layout="wide")
 
-data = st.file_uploader("Upload your input CSV file", type=['csv'])
+uploaded_file = st.file_uploader("Upload your input CSV file", type=['csv'])
                    
 if data is not None:
     # Assuming the CSV has headers, otherwise use header=None
