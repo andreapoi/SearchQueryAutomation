@@ -82,9 +82,12 @@ def main_dashboard():
         )
     
         output = chat_completion.choices[0].message.content
-    
-        st.write(output)
 
+        with st.expander("See Prompt"):
+          st.write(prompt)
+    
+        with st.expander("See Output from Chat GPT"):
+          st.write(output)
     
 if __name__ == '__main__':
     password_protection()
