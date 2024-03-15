@@ -13,6 +13,9 @@ if uploaded_file_keywords is not None and uploaded_file_search_terms is not None
     #Assuming the CSV has headers, otherwise use header = None
   
     search_term_data = pd.read_csv(uploaded_file_search_terms)
+    search_term_data = search_term_data.sort_values(by='Cost', ascending = False)
+    search_term_data['Cost'] = search_term_data['Cost'].astype(str)
+    search_term_data['Concatenated'] = search_term_data['Search terms'] + ' ' + search_term_data['Cost']
 
     #Get list of search terms for column
     search_term_col = search_term_data['Search term']
