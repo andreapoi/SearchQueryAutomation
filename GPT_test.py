@@ -12,7 +12,8 @@ uploaded_file_search_terms = st.file_uploader("Upload your Search terms file", t
 campaign = st.text_input("Please enter a campaign:", key = 'campaign')
 ad_group = st.text_input("Please enter an ad_group:", key = 'ad_group')
 
-if uploaded_file_keywords is not None and uploaded_file_search_terms is not None:
+#Only proceed if user has entered all the required fields
+if uploaded_file_keywords is not None and uploaded_file_search_terms is not None and campaign is not None and ad_group is not None:
 
     #Search Term Processing
     #Assuming the CSV has headers, otherwise use header = None
