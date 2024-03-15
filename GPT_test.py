@@ -9,8 +9,8 @@ uploaded_file_keywords = st.file_uploader("Upload your Keyword file", type=['csv
 
 uploaded_file_search_terms = st.file_uploader("Upload your Search terms file", type = ['csv'], key = 'search terms')
 
-campaign = st.input("Please enter a campaign:", key = 'campaign')
-ad_group = st.input("Please enter an ad_group:", key = 'ad_group')
+campaign = st.text_input("Please enter a campaign:", key = 'campaign')
+ad_group = st.text_input("Please enter an ad_group:", key = 'ad_group')
 
 if uploaded_file_keywords is not None and uploaded_file_search_terms is not None:
 
