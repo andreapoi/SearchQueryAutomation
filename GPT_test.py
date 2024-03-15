@@ -45,16 +45,14 @@ if uploaded_file_keywords is not None and uploaded_file_search_terms is not None
     #Combine Search terms into one string
     keywords = ", ".join(keyword_col)
 
-    st.write(keywords)
-    st.write(search_terms)
-
+    prompt = "What is the meaning of life?"
     client = OpenAI(api_key = chat_key)
 
     chat_completion = client.chat.completions.create(
     messages=[
         {
             "role": "user",
-            "content": "What is Machine Learning?",
+            "content": prompt,
         }
     ],
     model="gpt-3.5-turbo",
