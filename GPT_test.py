@@ -48,7 +48,23 @@ if uploaded_file_keywords is not None and uploaded_file_search_terms is not None
     st.write(keywords)
     st.write(search_terms)
 
-    prompt = ""
+    client = OpenAI(api_key = chat_key)
+
+    chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is Machine Learning?",
+        }
+    ],
+    model="gpt-3.5-turbo",
+    )
+
+    output = chat_completion.choices[0].message.content
+
+    st.write(output)
+
+    
     
 
 
