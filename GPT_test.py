@@ -3,9 +3,12 @@ import pandas as pd
 
 st.set_page_config(page_title= f"SQR Dash",page_icon="🧑‍🚀",layout="wide")
 
-uploaded_file = st.file_uploader("Upload your input CSV file", type=['csv'])
+uploaded_file_keywords = st.file_uploader("Upload your input CSV file", type=['csv'])
+
+uploaded_file_search_terms = st.file_uploader("Upload your input CSV file", type = ['csv'])
+
                    
-if uploaded_file is not None:
+if uploaded_file_keywords & uploaded_file_search_terms is not None:
     
     # Assuming the CSV has headers, otherwise use header=None
     data = pd.read_csv(uploaded_file)
