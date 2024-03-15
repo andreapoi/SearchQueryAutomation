@@ -46,10 +46,7 @@ if uploaded_file_keywords is not None and uploaded_file_search_terms is not None
     keywords = ", ".join(keyword_col)
 
     #Prompt
-    prompt = f"You are a digital marketer, you are going through a search query report for a campiagn titled: {campaign} and ad_group: {ad_group}. Keep in mind the relevance 
-    of the names of these two filters. The keywords that are currently in this group are as follows: {keywords}. Of this list of search terms I'm about to show you, we need
-    to find any terms that may be added to this group or excluded as well. Word that are not relevant need not be listed in the output. Also the number next to each search
-    term is the cost associated with it in Google Ads... here are the search terms: {search_terms}"
+    prompt = f"You are a digital marketer, you are going through a search query report for a campiagn titled: {campaign} and ad_group: {ad_group}. Keep in mind the relevance of the names of these two filters. The keywords that are currently in this group are as follows: {keywords}. Of this list of search terms I'm about to show you, we need to find any terms that may be added to this group or excluded as well. Word that are not relevant need not be listed in the output. Also the number next to each search term is the cost associated with it in Google Ads... here are the search terms: {search_terms}"
 
     
     client = OpenAI(api_key = chat_key)
