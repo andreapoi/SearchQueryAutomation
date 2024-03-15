@@ -43,7 +43,7 @@ if uploaded_file_keywords is not None and uploaded_file_search_terms is not None
     st.write(keywords)
     st.write(search_terms)
 
-    prompt = 
+    prompt = ""
     
 
 
