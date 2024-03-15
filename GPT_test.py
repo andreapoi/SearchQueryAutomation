@@ -22,13 +22,12 @@ def password_protection():
 
 #Set page layout and title
 st.set_page_config(page_title= f"SQR Dash",page_icon="🧑‍🚀",layout="wide")
-st.title("Search Query Automation App")
 
 #Get keys
 chat_key = st.secrets['ChatGPT_key']['token']
 
 def main_dashboard():
-  st.markdown(f"<h1 style='text-align: center;'>{Account} Creative Ad Testing</h1>", unsafe_allow_html=True)
+  st.markdown(f"<h1 style='text-align: center;'>Search Query Report Automation</h1>", unsafe_allow_html=True)
 
   #Upload files
   uploaded_file_keywords = st.file_uploader("Upload your Keyword file", type=['csv'], key = 'keywords')
