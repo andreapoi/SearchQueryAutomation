@@ -8,6 +8,8 @@ st.title("Search Query Automation App")
 
 #Get keys
 chat_key = st.secrets['ChatGPT_key']['token']
+st.write(chat_key)
+
 
 #Upload files
 uploaded_file_keywords = st.file_uploader("Upload your Keyword file", type=['csv'], key = 'keywords')
