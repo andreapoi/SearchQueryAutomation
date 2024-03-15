@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from openai import OpenAI
 
-correct_password = Chatforthewin
+correct_password = 'Chatforthewin'
 
 def password_protection():
   if 'authenticated' not in st.session_state:
@@ -12,7 +12,7 @@ def password_protection():
       password = st.text_input("Enter Password:", type="password")
       
       if st.button("Login"):
-          if password == correct_hashed_password:
+          if password == correct_password:
               st.session_state.authenticated = True
               main_dashboard()
           else:
