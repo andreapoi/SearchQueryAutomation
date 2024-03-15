@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 from openai import OpenAI
 
+correct_password = Chatforthewin
+
 def password_protection():
   if 'authenticated' not in st.session_state:
       st.session_state.authenticated = False
