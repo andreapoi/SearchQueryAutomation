@@ -18,7 +18,7 @@ if uploaded_file_keywords is not None and uploaded_file_search_terms is not None
     search_term_data['Concatenated'] = search_term_data['Search term'] + ' ' + search_term_data['Cost']
 
     #Get list of search terms for column
-    search_term_col = search_term_data['Search term']
+    search_term_col = search_term_data['Concatenated']
     
     #Combine Search terms into one string
     search_terms = ", ".join(search_term_col)
