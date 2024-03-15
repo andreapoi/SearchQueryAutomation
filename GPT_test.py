@@ -2,14 +2,18 @@ import streamlit as st
 import pandas as pd
 from openai import OpenAI
 
+#Set page layout and title
 st.set_page_config(page_title= f"SQR Dash",page_icon="🧑‍🚀",layout="wide")
-
 st.title("Search Query Automation App")
 
-uploaded_file_keywords = st.file_uploader("Upload your Keyword file", type=['csv'], key = 'keywords')
+#Get keys
+chat_key = st.secrets['ChatGPT_key']['token']
 
+#Upload files
+uploaded_file_keywords = st.file_uploader("Upload your Keyword file", type=['csv'], key = 'keywords')
 uploaded_file_search_terms = st.file_uploader("Upload your Search terms file", type = ['csv'], key = 'search terms')
 
+#Set campaign and Ad_group variables
 campaign = st.text_input("Please enter a campaign:", key = 'campaign')
 ad_group = st.text_input("Please enter an ad_group:", key = 'ad_group')
 
