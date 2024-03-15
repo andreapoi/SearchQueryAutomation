@@ -85,7 +85,8 @@ def main_dashboard():
         st.write(output)
 
     
-    
+if __name__ == '__main__':
+    password_protection()
 
 
 
