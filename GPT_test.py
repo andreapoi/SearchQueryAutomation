@@ -26,7 +26,7 @@ if uploaded_file_keywords is not None and uploaded_file_search_terms is not None
     keyword_data = pd.read_csv(uploaded_file_keywords)
 
     #Get list of search terms for column
-    keyword_col = keyword_data['Search term']
+    keyword_col = keyword_data['Keyword']
     
     #Combine Search terms into one string
     keywords = ", ".join(keyword_col)
