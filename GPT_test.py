@@ -3,27 +3,37 @@ import pandas as pd
 
 st.set_page_config(page_title= f"SQR Dash",page_icon="🧑‍🚀",layout="wide")
 
-uploaded_file_keywords = st.file_uploader("Upload your input CSV file", type=['csv'], key = 'keywords')
+uploaded_file_keywords = st.file_uploader("Upload your Keyword file", type=['csv'], key = 'keywords')
 
-uploaded_file_search_terms = st.file_uploader("Upload your input CSV file", type = ['csv'], key = 'search terms')
+uploaded_file_search_terms = st.file_uploader("Upload your Search terms file", type = ['csv'], key = 'search terms')
 
-                   
 if uploaded_file_keywords is not None and uploaded_file_search_terms is not None:
-    
-    # Assuming the CSV has headers, otherwise use header=None
-    data = pd.read_csv(uploaded_file)
 
-    #Display
-    st.write(data)
+    #Search Term Processing
+    #Assuming the CSV has headers, otherwise use header = None
+  
+    search_term_data = pd.read_csv(uploaded_file_search_terms)
 
     #Get list of search terms for column
-    search_term_col = data['Search term']
+    search_term_col = search_term_data['Search term']
     
     #Combine Search terms into one string
     search_terms = ", ".join(search_term_col)
+
+    #Keyword Processing
+    #Assuming the CSV has headers, otherwise use header = None
+  
+    keyword_data = pd.read_csv(uploaded_file_keywords)
+
+    #Get list of search terms for column
+    keyword_col = keyword_data['Search term']
     
-    #Display Search Terms
+    #Combine Search terms into one string
+    keywords = ", ".join(keyword_col)
+
+    st.write(keywords)
     st.write(search_terms)
+    
 
 
 
