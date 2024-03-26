@@ -71,7 +71,6 @@ def main_dashboard():
         
         client = OpenAI(api_key = chat_key)
     
-        chat_completion = client.chat.completions.create(
         # Define system and user messages for a multi-turn conversation
         messages = [
             {"role": "system", "content": "You are a digital marketer analyzing keywords for campaigns."},
