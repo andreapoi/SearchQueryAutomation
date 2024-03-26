@@ -66,32 +66,35 @@ def main_dashboard():
         keywords = ", ".join(keyword_col)
     
         #Prompt
-        prompt = f"You are a digital marketer, you are going through a search query report for a campiagn titled: {campaign} and ad_group: {ad_group}. Keep in mind the relevance of the names of these two filters. The keywords that are currently in this group are as follows: {keywords}. Of this list of search terms I'm about to show you, we need to find any terms that may be added to this group or excluded as well. Word that are not relevant need not be listed in the output. Also the number next to each search term is the cost associated with it in Google Ads... here are the search terms: {search_terms}"
+        prompt = f"You are a digital marketer, you are going through a search query report for a campiagn titled: {campaign} and ad_group: {ad_group}. Keep in mind the relevance of the names of these two filters. The keywords that are currently in this group are as follows: {keywords}. Of this list of search terms I'm about to show you, we need to find any terms that may be added to this group or excluded as well. Words that are not relevant need not be listed in the output. Also the number next to each search term is the cost associated with it in Google Ads... here are the search terms: {search_terms}"
     
         
         client = OpenAI(api_key = chat_key)
     
         chat_completion = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": prompt,
-            }
-        ],
-        model="gpt-3.5-turbo",
-        )
-    
-        output = chat_completion.choices[0].message.content
+        # Define system and user messages for a multi-turn conversation
+        messages = [
+            {"role": "system", "content": "You are a digital marketer analyzing keywords for campaigns."},
+            {"role": "user", "content": f"The campaign is titled: {campaign} and the ad group is: {ad_group}."},
+            {"role": "user", "content": f"The current keywords in this group are: {keywords}."},
+            {"role": "user", "content": f"Please review the following search terms to identify any that may be relevant or irrelevant for this group. The number next to each term is the cost associated with it in Google Ads: {search_terms}"},
+        ]
 
+        # Call the API with the updated messages and model
+        chat_completion = client.chat.completions.create(
+            messages=messages,
+            model="ft:gpt-3.5-turbo-0125:personal:test-mod-1:977LvAaP",  # Replace with your fine-tuned model's name
+        )
+
+        # Retrieve the output
+        output = chat_completion.choices[0].message['content']
+
+        # Display the prompt and output in the Streamlit app
         with st.expander("See Prompt"):
-          st.write(prompt)
-    
+            st.write(messages)
+
         with st.expander("See Output from Chat GPT"):
-          st.write(output)
+            st.write(output)
     
 if __name__ == '__main__':
     password_protection()
-
-
-
-
