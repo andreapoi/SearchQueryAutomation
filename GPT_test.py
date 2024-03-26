@@ -86,7 +86,7 @@ def main_dashboard():
         )
 
         # Retrieve the output
-        output = chat_completion.choices[0].message['content']
+        output = chat_completion.choices[0].message.content
 
         # Display the prompt and output in the Streamlit app
         with st.expander("See Prompt"):
