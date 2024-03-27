@@ -65,18 +65,15 @@ def main_dashboard():
         #Combine Search terms into one string
         keywords = ", ".join(keyword_col)
     
-        #Prompt
-        prompt = f"You are a digital marketer, you are going through a search query report for a campiagn titled: {campaign} and ad_group: {ad_group}. Keep in mind the relevance of the names of these two filters. The keywords that are currently in this group are as follows: {keywords}. Of this list of search terms I'm about to show you, we need to find any terms that may be added to this group or excluded as well. Words that are not relevant need not be listed in the output. Also the number next to each search term is the cost associated with it in Google Ads... here are the search terms: {search_terms}"
-    
         
         client = OpenAI(api_key = chat_key)
     
         # Define system and user messages for a multi-turn conversation
         messages = [
-            {"role": "system", "content": "You are a digital marketer analyzing keywords for campaigns."},
-            {"role": "user", "content": f"The campaign is titled: {campaign} and the ad group is: {ad_group}."},
-            {"role": "user", "content": f"The current keywords in this group are: {keywords}."},
-            {"role": "user", "content": f"Please review the following search terms to identify any that may be relevant or irrelevant for this group. The number next to each term is the cost associated with it in Google Ads: {search_terms}"},
+            {"role": "system", "content": "You are a digital marketer analyzing a search terms report from Google Ads. You need to identify terms that could be possible additions to a given campiagn and ad group combination for a solar client called Axia solar. You should disregard any mentions of competitors (i.e. Tesla) as well as things that would be bad for business like "free" or questions. Use your previous knowledge of Search Query reporting in this task."},
+            {"role": "user", "content": f"The campaign is titled: {campaign} and the ad group is: {ad_group}. Keep in mind that in each campaign there are usually references to 1. Type - like Brand (B) or Non - Brand (NB) 2. Campaign strategy - generic or type of term 3. Location - like CA. The location means that words specific to that area should defintley be considered but terms are not limited to things referencing that area. The ad group usually gets a bit more specific and constitutes a grouping of word (ie cost, gereral solar, house)."},
+            {"role": "user", "content": f"The current keywords in this group are: {keywords}. Added keywords should be pretty similar to these words but not limited to them. Use this list as a reference as to what added keywords should look like."},
+            {"role": "user", "content": f"Please review the following search terms to identify any that may be relevant or irrelevant for this group. The number next to each term is the cost associated with it in Google Ads. Higher costs means that term has been referenced a number of times. Be pretty selective about words that may get added.: {search_terms}"},
         ]
 
         # Call the API with the updated messages and model
