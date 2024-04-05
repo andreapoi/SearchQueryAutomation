@@ -91,6 +91,12 @@ def main_dashboard():
 
         with st.expander("See Output from Chat GPT"):
             st.write(output)
+
+        with st.expander("See Search Terms"):
+            st.write(search_term_data['Search term'])
+
+        with st.expander("See Keywords:):
+            st.write(keyword_data['Keyword'])
     
 if __name__ == '__main__':
     password_protection()
